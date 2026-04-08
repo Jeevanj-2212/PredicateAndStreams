@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 
 public class ConsumerAndSupplierExample {
     public static void main(String[] args) {
-        //Consumer just consumes the value and returns void
+        //Consumer just consumes the value and return type is void
      List<Integer> val = Arrays.asList(1,2,3);
 
         Consumer<List<Integer>> res = x-> {
