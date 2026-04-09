@@ -33,6 +33,15 @@ public class BiPredicateBiConsumerBiFunction {
         BinaryOperator<Integer> add = (x,y)->x+y;
 
         System.out.println("Add "+add.apply(3,2));
+        String actualUsername = "admin";
+        String actualPassword = "1234";
+
+        BiPredicate<String, String> isValidUser = (username, password) ->
+                username.equals(actualUsername) && password.equals(actualPassword);
+
+
+        System.out.println(isValidUser.test("admin", "1234")); // true
+        System.out.println(isValidUser.test("admin", "wrong")); // false
 
 
     }
