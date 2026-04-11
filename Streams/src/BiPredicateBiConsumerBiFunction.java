@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.*;
 
@@ -42,6 +44,13 @@ public class BiPredicateBiConsumerBiFunction {
 
         System.out.println(isValidUser.test("admin", "1234")); // true
         System.out.println(isValidUser.test("admin", "wrong")); // false
+
+
+        /*
+        * we van use method reference in place of lambda expression this we can use it without invoking the */
+
+        List<String> student = Arrays.asList("John","Peter","Roman");
+        student.forEach(System.out::println);
 
 
     }
