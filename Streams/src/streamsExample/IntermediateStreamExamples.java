@@ -50,5 +50,32 @@ public class IntermediateStreamExamples {
 
         System.out.println( Stream.iterate(1, x->x+1).limit(100).skip(10).collect(Collectors.toUnmodifiableList()));
 
+        //7 peek
+        //Performs the action on each element as it is consumed
+        Stream.iterate(1, x->x+1).skip(10).limit(100).peek(System.out::println).count();
+
+        //8 flat maps
+        //Handles streams of collections,lists or collection when each element itself is collection
+        //Flattens the nested structure (eg lists within list) so that they can be processed as a single sequence of elements
+        //Transform and flatten elements at the same time
+        List<List<String>> listOfList = Arrays.asList(
+                Arrays.asList("apple","banana"),
+                Arrays.asList("Guava","kiwi"),
+                Arrays.asList("Grape","Watermelon")
+        );
+        //Prints the 1st list
+        System.out.println(listOfList.get(0));
+        //prints the value inside the first list
+        System.out.println(listOfList.get(0).get(0));
+        // converting this list into single stream
+        // convert entire list to stream and then use flatmap to convert entire list to stream apply map if anything is to be done convert it to List
+        System.out.println(listOfList.stream().flatMap(x->x.stream()).map(String::toUpperCase).toList());
+
+        //Ex 2
+        List<String>sentences = Arrays.asList("Hello world","Java is powerful","Dsa");
+
+        System.out.println(sentences.stream().flatMap(sentence->Arrays.stream(sentence.split(" "))).map(String::toUpperCase).toList());
+
+
     }
 }

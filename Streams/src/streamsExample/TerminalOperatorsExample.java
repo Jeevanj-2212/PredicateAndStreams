@@ -1,9 +1,8 @@
 package streamsExample;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TerminalOperatorsExample {
     public static void main(String[] args) {
@@ -44,6 +43,37 @@ public class TerminalOperatorsExample {
         System.out.println(lst.stream().findAny().get());
 
 
+        // 7 To array
+
+        Object[] array = Stream.of(1,2,3).toArray();
+
+        //8 min/max
+
+        System.out.println("max: "+ Stream.of(2,4,88).max(Comparator.naturalOrder()));
+        System.out.println("min: "+ Stream.of(2,4,88).min(Comparator.naturalOrder()));
+
+
+        //9 forEachOrdered
+        // when we are using parallel streams the output will not come in the sequence manner so we can use forEachOrdered so that the output will be ordered
+
+
+        List<Integer>n = Arrays.asList(1, 2, 3, 4, 5);
+        System.out.println("with forEach loop");
+        n.parallelStream()
+                .forEach(System.out::println);
+        System.out.println("With forEachOrdered");
+        n.parallelStream().forEachOrdered(System.out::println);
+
+
+
+
+
+
+
+
+
+
+
         //example Filtering names and collecting it
 
         List<String> names = Arrays.asList("John", "Sam", "Anna", "Rudolf", "Fab");
@@ -68,6 +98,7 @@ public class TerminalOperatorsExample {
         //find even numbers and square the number and fine their sum
         List<Integer> numList = Arrays.asList(1,2,3,4,5,6);
         System.out.println(numList.stream().filter(x->x%2==0).map(y->y*y).reduce(Integer::sum).get());
+
 
     }
 }
