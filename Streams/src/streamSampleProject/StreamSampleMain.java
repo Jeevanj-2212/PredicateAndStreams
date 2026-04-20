@@ -74,7 +74,14 @@ public class StreamSampleMain {
                 .filter(item->item.getPrice()>50000)
                 .map(Item::getProductName).findFirst().get();
         System.out.println(res);
+//Most expensive product name across all orders
 
+        String result = orders.stream()
+                .flatMap(order -> order.getItems().stream())
+                .max(Comparator.comparing(Item::getPrice))
+                .map(Item::getProductName)
+                .orElse("No product");
+        System.out.println(result);
 
     }
 }
